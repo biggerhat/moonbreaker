@@ -6,7 +6,10 @@ import { createInertiaApp, Head, Link } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import PrimeVue from 'primevue/config';
+import ConfirmationService from 'primevue/confirmationservice';
 import 'primeicons/primeicons.css';
+import 'primevue/resources/primevue.min.css'
+import 'primevue/resources/themes/arya-blue/theme.css';
 
 import AppLayout from '@/Layouts/AppLayout.vue';
 
@@ -28,7 +31,8 @@ createInertiaApp({
         return createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(ZiggyVue)
-            .use(PrimeVue)
+            .use(PrimeVue, { ripple: true })
+            .use(ConfirmationService)
             .component("Link", Link)
             .component("Head", Head)
             .mount(el);

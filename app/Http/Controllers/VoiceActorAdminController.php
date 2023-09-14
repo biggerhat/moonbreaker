@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class UnitController extends Controller
+class VoiceActorAdminController extends Controller
 {
     //
 }
