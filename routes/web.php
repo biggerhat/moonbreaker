@@ -4,6 +4,7 @@ use App\Http\Controllers\AbilityAdminController;
 use App\Http\Controllers\ActionAdminController;
 use App\Http\Controllers\CultureAdminController;
 use App\Http\Controllers\CultureController;
+use App\Http\Controllers\RosterController;
 use App\Http\Controllers\UnitAdminController;
 use App\Services\Navigation\NavigationBar;
 use Illuminate\Foundation\Application;
@@ -23,12 +24,16 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Welcome');
+    return Inertia::render('Index');
 })->name("index");
 
 Route::prefix("cultures")->name("cultures.")->group(function () {
     Route::get("/", [CultureController::class, "index"])->name("index");
     Route::get("/{culture}", [CultureController::class, "view"])->name("view");
+});
+
+Route::prefix("rosters")->name("rosters.")->group(function () {
+    Route::get("/", [RosterController::class, "index"])->name("index");
 });
 
 
@@ -68,16 +73,4 @@ Route::prefix("admin")->name("admin.")->middleware(["role:super_admin|admin"])->
         Route::post("/edit/{ability}", [ActionAdminController::class, "update"])->name("update");
         Route::post("/delete/{action}", [ActionAdminController::class, "delete"])->name("delete");
     });
-});
-
-
-
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
 });

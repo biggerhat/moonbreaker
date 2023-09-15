@@ -49,6 +49,4 @@ class Unit extends Model {
     public function voiceActors(): BelongsTo {
         return $this->belongsTo(VoiceActor::class);
     }
-
-
 }

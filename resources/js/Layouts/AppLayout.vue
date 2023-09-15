@@ -27,10 +27,10 @@
                             <InputText placeholder="Search" class="mr-2" />
                         </span>
                         <span v-if="$page.props.auth.user">
-                            <Button icon="pi pi-sign-out" @click="logout" alt="Logout" />
+                            <Button v-tooltip.left="'Logout'" icon="pi pi-sign-out" @click="logout" alt="Logout" />
                         </span>
                         <span v-else>
-                            <Button icon="pi pi-user" @click="login" alt="Login" />
+                            <Button v-tooltip.left="'Login/Register'" icon="pi pi-user" @click="login" alt="Login" />
                         </span>
                     </template>
                 </Menubar>
@@ -57,11 +57,14 @@ import {router} from '@inertiajs/vue3';
 import Message from 'primevue/message';
 import Menubar from 'primevue/menubar';
 import Button from "primevue/button";
+import { dom } from '@fortawesome/fontawesome-svg-core';
 import InputText from "primevue/inputtext";
 
 defineProps({
     title: String,
 });
+
+dom.watch();
 
 const logout = () => {
     router.post(route('logout'));

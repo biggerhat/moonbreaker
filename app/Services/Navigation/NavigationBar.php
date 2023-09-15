@@ -29,24 +29,26 @@ class NavigationBar {
 
     private static function basic(): array {
         $cultures = Culture::all();
+
+        $culturesMenu = [];
+        foreach ($cultures as $culture) {
+            $culturesMenu[] = [
+                "label" => $culture->name,
+                "icon" => "pi pi-users",
+                "route" => route("cultures.view", $culture),
+            ];
+        }
+
         $basic = [
             [
                 "label" => "Cultures",
-                "icon" => "pi pi-sun",
-                "items" => [
-                    [
-                        "label" => "View All",
-                        "icon" => "pi pi-sun",
-                        "route" => route("cultures.index"),
-                    ],
-                    $cultures->flatMap(function (Culture $culture) {
-                        return [
-                            "label" => $culture->name,
-                            "icon" => "pi pi-sun",
-                            "route" => route("cultures.view", $culture),
-                        ];
-                    })
-                ],
+                "icon" => "fa fa-street-view",
+                "items" => $culturesMenu,
+            ],
+            [
+                "label" => "Roster Lists",
+                "icon" => "pi pi-list",
+                "route" => route("rosters.index"),
             ]
         ];
 

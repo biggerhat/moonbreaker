@@ -2,8 +2,12 @@ import './bootstrap';
 import '../css/app.css';
 
 import { createApp, h } from 'vue';
-import { createInertiaApp, Head, Link } from '@inertiajs/vue3';
+import {createInertiaApp, Head, Link } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faStreetView } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import Tooltip from 'primevue/tooltip';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import PrimeVue from 'primevue/config';
 import ConfirmationService from 'primevue/confirmationservice';
@@ -12,6 +16,8 @@ import 'primevue/resources/primevue.min.css'
 import 'primevue/resources/themes/arya-blue/theme.css';
 
 import AppLayout from '@/Layouts/AppLayout.vue';
+
+library.add(faStreetView);
 
 const appName = import.meta.env.VITE_APP_NAME || 'Cinderborn';
 
@@ -35,6 +41,8 @@ createInertiaApp({
             .use(ConfirmationService)
             .component("Link", Link)
             .component("Head", Head)
+            .component('font-awesome-icon', FontAwesomeIcon)
+            .directive('tooltip', Tooltip)
             .mount(el);
     },
     progress: {
