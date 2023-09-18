@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Enums\UnitTypeEnum;
 use App\Traits\ToSelectOptionsScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 
 class Culture extends Model {
@@ -26,5 +28,10 @@ class Culture extends Model {
 
     public function units(): BelongsToMany {
         return $this->belongsToMany(Unit::class);
+    }
+
+    public function captains(): Collection {
+        $this->loadMissing("units");
+        return $this->units->where("type", UnitTypeEnum::captain);
     }
 }

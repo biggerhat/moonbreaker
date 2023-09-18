@@ -57,6 +57,16 @@
                         <div v-if="$page.props.errors.speed" class="text-xs text-red-500">{{ $page.props.errors.speed }}</div>
                     </div>
                     <div class="flex flex-col gap-2 mb-6">
+                        <label for="abilities">Abilities</label>
+                        <MultiSelect id="abilities" v-model="formInfo.abilities" display="chip" filter :options="abilities" optionLabel="name" placeholder="Select Abilities" />
+                        <div v-if="$page.props.errors.abilities" class="text-xs text-red-500">{{ $page.props.errors.abilities }}</div>
+                    </div>
+                    <div class="flex flex-col gap-2 mb-6">
+                        <label for="actions">Actions</label>
+                        <MultiSelect id="actions" v-model="formInfo.actions" display="chip" filter :options="actions" optionLabel="name" placeholder="Select Actions" />
+                        <div v-if="$page.props.errors.actions" class="text-xs text-red-500">{{ $page.props.errors.actions }}</div>
+                    </div>
+                    <div class="flex flex-col gap-2 mb-6">
                         <label for="is_hireable">Is Hireable</label>
                         <InputSwitch id="is_hireable" class="p-inputswitch" v-model="formInfo.is_hireable" />
                         <div v-if="$page.props.errors.is_hireable" class="text-xs text-red-500">{{ $page.props.errors.is_hireable }}</div>
@@ -115,6 +125,20 @@ const props = defineProps({
             return null;
         }
     },
+    selected_actions: {
+        type: [Object, Array],
+        required: false,
+        default() {
+            return null;
+        }
+    },
+    selected_abilities: {
+        type: [Object, Array],
+        required: false,
+        default() {
+            return null;
+        }
+    },
     types: {
         type: [Object, Array],
         required: false,
@@ -130,6 +154,20 @@ const props = defineProps({
         }
     },
     attack_types: {
+        type: [Object, Array],
+        required: false,
+        default() {
+            return null;
+        }
+    },
+    actions: {
+        type: [Object, Array],
+        required: false,
+        default() {
+            return null;
+        }
+    },
+    abilities: {
         type: [Object, Array],
         required: false,
         default() {
@@ -183,6 +221,8 @@ const formInfo = ref({
     size: null,
     cost: null,
     cinder: null,
+    abilities: null,
+    actions: null,
     attack_type: null,
     damage: null,
     health: null,
@@ -210,6 +250,8 @@ onMounted(() => {
 
     formInfo.value.name = props.unit?.name ?? null;
     formInfo.value.cultures = props.selected_cultures ?? null;
+    formInfo.value.actions = props.selected_actions ?? null;
+    formInfo.value.abilities = props.selected_abilities ?? null;
     formInfo.value.type = props.unit?.type ?? null;
     formInfo.value.size = props.unit?.size ?? null;
     formInfo.value.cost = props.unit?.cost ?? null;

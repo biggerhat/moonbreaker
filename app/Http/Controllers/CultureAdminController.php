@@ -9,7 +9,7 @@ use Inertia\Inertia;
 
 class CultureAdminController extends Controller {
     public function index(Request $request) {
-        return inertia("Cultures/Index", [
+        return inertia("Cultures/AdminIndex", [
             "cultures" => Culture::all(),
         ]);
     }
