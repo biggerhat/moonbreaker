@@ -7,11 +7,10 @@ use Illuminate\Http\Request;
 
 class CultureController extends Controller {
     public function view(Request $request, Culture $culture) {
-        $culture->loadMissing("units");
+        $culture->loadMissing("captains", "crew");
 
         return inertia("Cultures/View", [
             "culture" => $culture,
-            "captains" => $culture->captains(),
         ]);
     }
 }

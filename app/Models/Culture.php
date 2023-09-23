@@ -30,8 +30,11 @@ class Culture extends Model {
         return $this->belongsToMany(Unit::class);
     }
 
-    public function captains(): Collection {
-        $this->loadMissing("units");
-        return $this->units->where("type", UnitTypeEnum::captain);
+    public function captains(): BelongsToMany {
+        return $this->units()->where("type", UnitTypeEnum::captain);
+    }
+
+    public function crew(): BelongsToMany {
+        return $this->units()->where("type", UnitTypeEnum::crew);
     }
 }

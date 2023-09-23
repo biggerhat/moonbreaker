@@ -38,7 +38,7 @@
         </div>
 
         <!-- Page Content -->
-        <main class="min-h-screen container mx-auto pt-6 px-2 md:px-0">
+        <main class="min-h-screen container mx-auto pt-6 px-2 md:px-0 mb-6">
             <Message v-if="$page.props.jetstream?.flash?.message"
                      :severity="$page.props.jetstream?.flash?.messageType"
             >
@@ -74,3 +74,13 @@ const login = () => {
     router.get(route('login'));
 };
 </script>
+
+<style>
+pre {
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+</style>

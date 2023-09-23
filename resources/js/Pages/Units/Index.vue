@@ -14,7 +14,7 @@
                     <Column field="id" header="ID"></Column>
                     <Column field="image" header="image">
                         <template #body="props">
-                            <Image :src="imagePath(props.data.base_image)" :alt="props.data.name" />
+                            <img :src="imagePath(props.data.base_image)" class="h-48" :alt="props.data.name" />
                         </template>
 
                     </Column>

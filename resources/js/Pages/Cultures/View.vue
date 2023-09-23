@@ -8,9 +8,15 @@
         </p>
     </Panel>
 
-    <Panel header="Captains">
+    <Panel header="Captains" class="mb-6">
         <div class="flex items-center">
-            <UnitCard v-for="captain in captains" :unit="captain" />
+            <UnitCard v-for="captain in culture.captains" :unit="captain" class="hover:border hover:border-blue-300 border border-[#1E1E1E]" link=link />
+        </div>
+    </Panel>
+
+    <Panel header="Crew">
+        <div class="flex items-center">
+            <UnitCard v-for="crew in culture.crew" :unit="crew" custom-classes="hover:border hover:border-blue-300 border border-[#1E1E1E]" link=link />
         </div>
     </Panel>
 
@@ -38,3 +44,9 @@ const props = defineProps({
 });
 
 </script>
+
+<style>
+.p-panel-content {
+    background: #1E1E1E !important;
+}
+</style>

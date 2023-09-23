@@ -5,7 +5,8 @@ import { createApp, h } from 'vue';
 import {createInertiaApp, Head, Link } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faStreetView } from '@fortawesome/free-solid-svg-icons';
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { far } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import Tooltip from 'primevue/tooltip';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
@@ -13,11 +14,11 @@ import PrimeVue from 'primevue/config';
 import ConfirmationService from 'primevue/confirmationservice';
 import 'primeicons/primeicons.css';
 import 'primevue/resources/primevue.min.css'
-import 'primevue/resources/themes/arya-blue/theme.css';
+import 'primevue/resources/themes/soho-dark/theme.css';
 
 import AppLayout from '@/Layouts/AppLayout.vue';
 
-library.add(faStreetView);
+library.add(fas, far);
 
 const appName = import.meta.env.VITE_APP_NAME || 'Cinderborn';
 

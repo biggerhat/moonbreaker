@@ -24,6 +24,11 @@ class Unit extends Model {
         "attack_type" => UnitAttackTypeEnum::class,
     ];
 
+    protected $with = [
+        "actions",
+        "abilities",
+    ];
+
     protected static function booted(): void {
         static::creating(function (Unit $unit) {
             $unit->slug = Str::slug($unit->name);

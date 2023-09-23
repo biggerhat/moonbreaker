@@ -6,6 +6,7 @@ use App\Http\Controllers\CultureAdminController;
 use App\Http\Controllers\CultureController;
 use App\Http\Controllers\RosterController;
 use App\Http\Controllers\UnitAdminController;
+use App\Http\Controllers\UnitController;
 use App\Services\Navigation\NavigationBar;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
@@ -29,7 +30,12 @@ Route::get('/', function () {
 
 Route::prefix("cultures")->name("cultures.")->group(function () {
     Route::get("/", [CultureController::class, "index"])->name("index");
-    Route::get("/{culture}", [CultureController::class, "view"])->name("view");
+    Route::get("/{culture:slug}", [CultureController::class, "view"])->name("view");
+});
+
+Route::prefix("units")->name("units.")->group(function () {
+    Route::get("/", [UnitController::class, "index"])->name("index");
+    Route::get("/{unit:slug}", [UnitController::class, "view"])->name("view");
 });
 
 Route::prefix("rosters")->name("rosters.")->group(function () {
@@ -69,8 +75,8 @@ Route::prefix("admin")->name("admin.")->middleware(["role:super_admin|admin"])->
         Route::get("/", [ActionAdminController::class, "index"])->name("index");
         Route::get("/create", [ActionAdminController::class, "create"])->name("create");
         Route::post("/create", [ActionAdminController::class, "store"])->name("store");
-        Route::get("/edit/{ability}", [ActionAdminController::class, "edit"])->name("edit");
-        Route::post("/edit/{ability}", [ActionAdminController::class, "update"])->name("update");
+        Route::get("/edit/{action}", [ActionAdminController::class, "edit"])->name("edit");
+        Route::post("/edit/{action}", [ActionAdminController::class, "update"])->name("update");
         Route::post("/delete/{action}", [ActionAdminController::class, "delete"])->name("delete");
     });
 });

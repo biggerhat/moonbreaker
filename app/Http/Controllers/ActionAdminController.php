@@ -28,7 +28,7 @@ class ActionAdminController extends Controller {
     }
 
     public function edit(Request $request, Action $action) {
-        return inertia("Action/ActionForm", [
+        return inertia("Actions/ActionForm", [
             "action" => $action,
         ]);
     }
