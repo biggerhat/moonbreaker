@@ -15,7 +15,7 @@
     </Panel>
 
     <Panel header="Crew">
-        <div class="flex items-center">
+        <div class="flex items-center flex-wrap">
             <UnitCard v-for="crew in culture.crew" :unit="crew" custom-classes="hover:border hover:border-blue-300 border border-[#1E1E1E]" link=link />
         </div>
     </Panel>
