@@ -27,7 +27,7 @@ class Culture extends Model {
     }
 
     public function units(): BelongsToMany {
-        return $this->belongsToMany(Unit::class);
+        return $this->belongsToMany(Unit::class)->orderBy("cost", "ASC");
     }
 
     public function captains(): BelongsToMany {
