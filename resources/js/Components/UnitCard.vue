@@ -64,7 +64,7 @@ hr {
 
 <template>
     <div
-        class="p-card p-card-content w-full md:w-1/2 lg:w-1/4 mx-auto my-4"
+        class="p-card p-card-content w-full md:w-1/2 lg:w-1/4 mx-auto my-4 flex flex-col"
         :class="[customClasses, link ? 'hover:cursor-pointer' : '']"
         @click="link ? unitPage() : ''"
     >
@@ -105,16 +105,19 @@ hr {
                 <p>{{ action.description }}</p>
             </div>
         </div>
-        <div class="flex items-center">
-            <div class="rounded-full bg-black p-2 mb-2 text-2xl mx-auto min-w-1/3 text-center">
+        <div style="margin-top: auto;">
+            <div class="flex items-center">
+                <div class="rounded-full bg-black p-2 mb-2 text-2xl mx-auto min-w-1/3 text-center">
                 <span v-if="unit.attack_type !== 'none'" class="mx-4">
                     {{ unit.damage }}
                     <i class="text-blue-700 fa fa-crosshairs" v-if="unit.attack_type === 'ranged'" />
                     <svg xmlns="http://www.w3.org/2000/svg" v-if="unit.attack_type ==='melee'" viewBox="0 0 512 512" style="height: 1.5em; width: 1.5em; fill: yellow" class="inline"><g class="" transform="translate(0,0)" style=""><path d="M62.5 17.28c-9.747.288-20.824 5.23-29.844 14.25-15.192 15.193-18.838 36.194-8.125 46.907 7.99 7.988 21.716 8.027 34.47 1.22 16.167 30.05 42.154 57.687 71.438 76.374-18.77 24.156-29.97 54.48-29.97 87.376h18.688c0-28.9 9.828-55.474 26.344-76.53l2.156 39.405C274.5 320.554 402.09 428.196 496.062 494.94c-65.54-95.294-176.99-224.638-288.687-348.407l-38.97-2.124c20.764-15.68 46.638-24.967 74.72-24.97V100.75c-32.2.002-61.945 10.725-85.844 28.78-18.696-29.383-46.39-55.48-76.53-71.686 6.795-12.748 6.796-26.423-1.188-34.407-4.352-4.352-10.393-6.352-17.062-6.156z" fill-opacity="1"></path></g></svg>
                 </span>
-                <span class="mx-4">{{ unit.health }} <i class="fa fa-heart text-red-700" /></span>
+                    <span class="mx-4">{{ unit.health }} <i class="fa fa-heart text-red-700" /></span>
+                </div>
             </div>
         </div>
+
 
     </div>
 </template>
